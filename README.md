@@ -8,6 +8,8 @@ A single `CLAUDE.md` file to improve Claude Code behavior, derived from [Andrej 
 
 English | [简体中文](./README.zh.md)
 
+> **Note:** in this fork, the guideline files (`CLAUDE.md`, `SKILL.md`, and the Cursor rule) are written in Portuguese and add a fifth principle, *Rigor with Sources and Data*.
+
 ## The Problems
 
 From Andrej's post:
@@ -20,7 +22,7 @@ From Andrej's post:
 
 ## The Solution
 
-Four principles in one file that directly address these issues:
+Five principles in one file that directly address these issues:
 
 | Principle | Addresses |
 |-----------|-----------|
@@ -28,8 +30,9 @@ Four principles in one file that directly address these issues:
 | **Simplicity First** | Overcomplication, bloated abstractions |
 | **Surgical Changes** | Orthogonal edits, touching code you shouldn't |
 | **Goal-Driven Execution** | Leverage through tests-first, verifiable success criteria |
+| **Rigor with Sources and Data** | Fabricated references or values, untraceable claims, hidden uncertainty |
 
-## The Four Principles in Detail
+## The Five Principles in Detail
 
 ### 1. Think Before Coding
 
@@ -96,13 +99,28 @@ For multi-step tasks, state a brief plan:
 
 Strong success criteria let the LLM loop independently. Weak criteria ("make it work") require constant clarification.
 
+### 5. Rigor with Sources and Data
+
+**Never fabricate. Separate what was verified from what was inferred.**
+
+For research, data analysis, and clinical content:
+
+- **No fabricated sources** — Never invent references, values, results, or quotes; if nothing was found, say so
+- **Cite every relevant claim** — Article, registry, file, or line
+- **Make uncertainty explicit** — Label claims as verified, inferred, or unknown
+- **Declare every data transformation** — No silent rounding, filtering, or dropping
+- **Report results as they are** — Including negative or inconclusive ones
+- **Clinical decisions belong to the professional** — Present evidence and limitations, not prescriptions
+
+**The test:** Can someone else retrace the path to every number and every claim?
+
 ## Install
 
 **Option A: Claude Code Plugin (recommended)**
 
 From within Claude Code, first add the marketplace:
 ```
-/plugin marketplace add forrestchang/andrej-karpathy-skills
+/plugin marketplace add MBello-MD/andrej-karpathy-skills
 ```
 
 Then install the plugin:
@@ -116,13 +134,13 @@ This installs the guidelines as a Claude Code plugin, making the skill available
 
 New project:
 ```bash
-curl -o CLAUDE.md https://raw.githubusercontent.com/forrestchang/andrej-karpathy-skills/main/CLAUDE.md
+curl -o CLAUDE.md https://raw.githubusercontent.com/MBello-MD/andrej-karpathy-skills/main/CLAUDE.md
 ```
 
 Existing project (append):
 ```bash
 echo "" >> CLAUDE.md
-curl https://raw.githubusercontent.com/forrestchang/andrej-karpathy-skills/main/CLAUDE.md >> CLAUDE.md
+curl https://raw.githubusercontent.com/MBello-MD/andrej-karpathy-skills/main/CLAUDE.md >> CLAUDE.md
 ```
 
 ## Using with Cursor
@@ -145,6 +163,7 @@ These guidelines are working if you see:
 - **Fewer rewrites due to overcomplication** — Code is simple the first time
 - **Clarifying questions come before implementation** — Not after mistakes
 - **Clean, minimal PRs** — No drive-by refactoring or "improvements"
+- **Every claim has a traceable source** — No invented references or values
 
 ## Customization
 

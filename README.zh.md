@@ -8,6 +8,8 @@
 
 [English](./README.md) | 简体中文
 
+> **注意：** 在此 fork 中，规则文件（`CLAUDE.md`、`SKILL.md` 和 Cursor 规则）使用葡萄牙语编写，并新增了第五个原则 *严谨对待来源与数据*。
+
 ## 问题所在
 
 来自 Andrej 的推文：
@@ -20,7 +22,7 @@
 
 ## 解决方案
 
-四个原则，集中在一个文件中，直接解决这些问题：
+五个原则，集中在一个文件中，直接解决这些问题：
 
 | 原则 | 解决什么问题 |
 |-----------|-----------|
@@ -28,8 +30,9 @@
 | **简洁优先** | 过度复杂、臃肿抽象 |
 | **精准修改** | 无关编辑、触碰不应碰的代码 |
 | **目标驱动执行** | 通过测试优先、可验证的成功标准 |
+| **严谨对待来源与数据** | 捏造的参考文献或数值、无法追溯的论断、隐藏的不确定性 |
 
-## 四个原则详解
+## 五个原则详解
 
 ### 1. 编码前思考
 
@@ -96,13 +99,28 @@ LLM 经常默默选择一种解释然后执行。这个原则强制明确推理�
 
 强有力的成功标准让 LLM 能够独立循环执行。弱标准（"让它工作"）需要不断澄清。
 
+### 5. 严谨对待来源与数据
+
+**绝不捏造。区分已验证的内容与推断的内容。**
+
+适用于研究、数据分析和临床内容：
+
+- **不捏造来源** —— 绝不编造参考文献、数值、结果或引文；没找到就直说没找到
+- **为每个重要论断注明出处** —— 文章、登记记录、文件或行号
+- **明确表达不确定性** —— 区分"已验证"、"推断"和"未知"
+- **声明所有数据变换** —— 不得悄悄四舍五入、过滤或丢弃数据
+- **如实报告结果** —— 包括阴性或不确定的结果
+- **临床决策属于专业人员** —— 提供证据和局限性，而不是处方
+
+**检验标准：** 其他人能否追溯到每个数字和每个论断的来源？
+
 ## 安装
 
 **选项 A：Claude Code 插件（推荐）**
 
 在 Claude Code 中，首先添加插件市场：
 ```
-/plugin marketplace add forrestchang/andrej-karpathy-skills
+/plugin marketplace add MBello-MD/andrej-karpathy-skills
 ```
 
 然后安装插件：
@@ -116,13 +134,13 @@ LLM 经常默默选择一种解释然后执行。这个原则强制明确推理�
 
 新项目：
 ```bash
-curl -o CLAUDE.md https://raw.githubusercontent.com/forrestchang/andrej-karpathy-skills/main/CLAUDE.md
+curl -o CLAUDE.md https://raw.githubusercontent.com/MBello-MD/andrej-karpathy-skills/main/CLAUDE.md
 ```
 
 已有项目（追加）：
 ```bash
 echo "" >> CLAUDE.md
-curl https://raw.githubusercontent.com/forrestchang/andrej-karpathy-skills/main/CLAUDE.md >> CLAUDE.md
+curl https://raw.githubusercontent.com/MBello-MD/andrej-karpathy-skills/main/CLAUDE.md >> CLAUDE.md
 ```
 
 ## 在 Cursor 中使用
@@ -145,6 +163,7 @@ curl https://raw.githubusercontent.com/forrestchang/andrej-karpathy-skills/main/
 - **因过度复杂而导致的重写更少** —— 代码第一次就写得简洁
 - **澄清问题在实现之前提出** —— 而不是在犯错之后
 - **干净、精简的 PR** —— 没有顺带的重构或"改进"
+- **每个论断都有可追溯的来源** —— 没有编造的参考文献或数值
 
 ## 定制
 
